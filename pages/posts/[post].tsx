@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 export async function getServerSideProps({ params }: any) {
   const { post } = params;
   return {
@@ -8,7 +10,9 @@ export async function getServerSideProps({ params }: any) {
 }
 
 const Post = (props: any) => {
-  return <div>{props.post} Enter</div>;
+  const route = useRouter();
+  console.log(route.query);
+  return <div>{route.query + "-"} Enter</div>;
 };
 
 export default Post;
